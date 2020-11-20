@@ -6,7 +6,8 @@ const { exec } = require("child_process");
 const app = express()
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-const port = 3000
+const port = 3000;
+const host = "192.168.94.128";
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -20,7 +21,7 @@ app.post('/api/user/disconnect', function (req, res) {
     var password = req.body.password;
     //console.log("echo user-name="+radius_username+" | radclient -x "+nas_ip+":1700 disconnect "+password);
     if (radius_username && nas_ip && password) {
-        exec("echo user-name="+radius_username+" | radclient -x "+nas_ip+":1700 disconnect "+password, (error, stdout, stderr) => {
+        exec("echo user-name=" + radius_username + " | radclient -x " + nas_ip + ":1700 disconnect " + password, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
@@ -37,6 +38,6 @@ app.post('/api/user/disconnect', function (req, res) {
 });
 
 
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
