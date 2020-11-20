@@ -34,7 +34,7 @@ app.post('/api/user/disconnect', function (req, res) {
         });
     }
 
-    res.send(radius_username + '&' + nas_ip);
+    res.send("done");
 });
 
 
