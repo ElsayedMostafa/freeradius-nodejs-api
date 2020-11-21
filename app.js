@@ -7,7 +7,7 @@ const app = express()
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 const port = 3000;
-const host = "192.168.94.128";
+const host = "172.16.5.5";
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
