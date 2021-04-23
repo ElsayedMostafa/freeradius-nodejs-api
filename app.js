@@ -21,7 +21,7 @@ app.post('/api/user/disconnect', function (req, res) {
     var password = req.body.password;
     //console.log("echo user-name="+radius_username+" | radclient -x "+nas_ip+":1700 disconnect "+password);
     if (radius_username && nas_ip && password) {
-        exec("echo user-name=" + radius_username + " | radclient -x " + nas_ip + ":1700 disconnect " + password, (error, stdout, stderr) => {
+        exec("echo user-name=" + radius_username + " | /usr/local/bin/radclient -x " + nas_ip + ":1700 disconnect " + password, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
